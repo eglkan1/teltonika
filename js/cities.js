@@ -1,6 +1,6 @@
 // apdirbti location.href ( cia yra url'as), kad paliktu tik po id= esantis skaicius
 
-let id = location.href.slice(37);
+let id = location.href.split('=').pop();
 
 let countryUrl = "https://akademija.teltonika.lt/api3/countries/" + id;
 fetch(countryUrl).then(
