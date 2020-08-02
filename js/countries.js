@@ -15,7 +15,7 @@ fetch(url).then(
 
 						u = data.countires[i];
 						temp += "<tr>";
-						temp += "<td><a href=cities.html>"+u.name+"</a></td>";
+						temp += "<td><a id=\""+u.id+"\" href=#>"+u.name+"</td>";
 						temp += "<td>"+u.area+"</td>";
 						temp += "<td>"+u.population+"</td>";
 						temp += "<td>"+u.calling_code+"</td>";
@@ -31,12 +31,11 @@ fetch(url).then(
 								getElementsByTagName("a");
 				
 				for (let i = 0; i < listItems.length; i++) {
-					
 					listItems[i].addEventListener("click", activateItem)
 				}
 
 				function activateItem(){
-					ourHeadline.innerHTML = this.innerHTML;
+					window.location = "cities.html?id=" + this.id;
 				}
 
 				}	
