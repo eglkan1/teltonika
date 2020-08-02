@@ -5,6 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/styles.css">
+	<script src="js/form_button.js"></script>
+	<script src="js/post_country_data.js"></script>
+
 	<title>Bandymas</title>
 	
 </head>
@@ -15,7 +18,8 @@
 	
 
 <div class="title">
-	<h1 id="main-headline">ŠALYS<button class="button">+</button></h1>
+	<h1 id="main-headline">ŠALYS</h1>
+	<a href="#" id="button1" onclick="buttonClick()" class="button" >+</a>
 </div>
 
 
@@ -37,31 +41,30 @@
 
 <div class="bg-modal">
 	<div class="modal-content">
+		<div class="close" onclick="closeButton()">+</div>
 		<h2 id="form-headline">PRIDĖTI ŠALĮ</h2>
 		<form action="">
 			<fieldset>
 				<legend>Pavadinimas</legend>
-				<input type="text">
+				<input id="name" type="text">
 			</fieldset>
 			<fieldset>
 				<legend>Užimamas plotas</legend>
-				<input type="text">
+				<input id="area" type="text">
 			</fieldset>
 			<fieldset>
 				<legend>Gyventojų skaičius</legend>
-				<input type="text">
+				<input id="population" type="text">
 			</fieldset>
 			<fieldset>
 				<legend>Šalies tel. kodas</legend>
-				<input type="text">
+				<input id="calling_code" type="text">
 			</fieldset>
 
-			<a href="" class="button2">SAUGOTI</a>
+			<a href="" class="button2" onclick="takeInput()">SAUGOTI</a>
 
 		</form>
 	</div>
-
-	
 </div>
 
 <script src="js/countries.js"></script>
