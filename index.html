@@ -12,9 +12,12 @@
 
 <div class="header"></div>
 
+	
+
 <div class="title">
-	<h1 id="main-headline">ŠALYS</h1>
+	<h1 id="main-headline">ŠALYS<button class="button">+</button></h1>
 </div>
+
 
 <div class="main-content">
 	<table id="countries-data">
@@ -26,7 +29,39 @@
 				<th>VEIKSMAI</th>
 			</tr> 
 		<tbody id="data"></tbody>
+
 	</table>
+</div>
+
+<!-- Modal Section -->
+
+<div class="bg-modal">
+	<div class="modal-content">
+		<h2 id="form-headline">PRIDĖTI ŠALĮ</h2>
+		<form action="">
+			<fieldset>
+				<legend>Pavadinimas</legend>
+				<input type="text">
+			</fieldset>
+			<fieldset>
+				<legend>Užimamas plotas</legend>
+				<input type="text">
+			</fieldset>
+			<fieldset>
+				<legend>Gyventojų skaičius</legend>
+				<input type="text">
+			</fieldset>
+			<fieldset>
+				<legend>Šalies tel. kodas</legend>
+				<input type="text">
+			</fieldset>
+
+			<a href="" class="button2">SAUGOTI</a>
+
+		</form>
+	</div>
+
+	
 </div>
 
 <script src="js/countries.js"></script>

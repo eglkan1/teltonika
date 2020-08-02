@@ -23,7 +23,7 @@ border-radius: 5px;
 
 /* šalys */
 .title {
-position: absolute;
+position: relative;
 width: 166px;
 height: 95px;
 left: 376px;
@@ -39,6 +39,22 @@ letter-spacing: 0.016em;
 text-transform: uppercase;
 
 color: #5C5C5C;
+}
+
+.button{
+	/* Group 6 */
+font-size: 50px;
+font-family: Oswald;
+position: absolute;
+width: 60px;
+height: 60px;
+left: 220px;
+top: 15px;
+border-radius: 100px;
+background: #FFFFFF;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+outline: none;
+
 }
 
  td, th {
@@ -61,6 +77,79 @@ table {
 th, td {
   padding: 15px;
 }
+
+.bg-modal {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255,255,255,0.7);
+	position: absolute;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-content {
+
+width: 466px;
+height: 446px;
+left: 727px;
+top: 317px;
+text-align: left;
+font-family: Oswald;
+background: #FFFFFF;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+color: #5C5C5C;
+
+}
+
+#form-headline {
+
+	padding: 10px;
+	margin: 30px;
+
+}
+
+.button2{
+	/* Group 6 */
+font-family: Oswald;
+width: 95px;
+height: 40px;
+left: 1055px;
+top: 691px;
+border-radius: 5px;
+background: #FFFFFF;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+outline: none;
+padding: 10px;
+
+}
+
+input {
+
+	border:none;
+	outline: none;
+
+}
+
+fieldset {
+
+	font-family: Oswald;
+	width: 374px;
+	height: 50px;
+	left: 773px;
+	top: 418px;
+	display: block;
+	margin: 15px auto;
+	border-radius: 7px;
+	outline: none;
+	border: 0.75px solid #969696;
+	box-sizing: border-box;
+}
+
+
+/* Pavadinimas */
 
 
 
