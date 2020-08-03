@@ -4,8 +4,8 @@ let ourHeadline;
 fetch(url).then(
 	function(res){
 		res.json().then(
-			function(data){
-				console.log(data)
+			function (data){
+			//	console.log(data)
 	
 				if(data.count > 0){
 					let temp = "";
@@ -20,13 +20,14 @@ fetch(url).then(
 						temp += "<td>"+u.population+"</td>";
 						temp += "<td>"+u.calling_code+"</td>";
 						temp += "<td>"+u.calling_code+"</td></tr>";
+
+
 					}
 					//close for data loop
 
 				document.getElementById("data").innerHTML = temp;
 				
 				ourHeadline = document.getElementById("main-headline");
-				console.log(ourHeadline);
 				let listItems = document.getElementById("data").
 								getElementsByTagName("a");
 				

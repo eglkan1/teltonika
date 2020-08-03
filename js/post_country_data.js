@@ -1,4 +1,8 @@
+
+
+document.getElementById("button2").addEventListener("click", takeInput);
 let postUrl = "https://akademija.teltonika.lt/api3/countries";
+
 function takeInput () {
     let name = document.getElementById("name").value;
     let area = parseInt(document.getElementById("area").value);
@@ -32,4 +36,7 @@ function postData(data)
         body : rawData})
         .then(response  => response.json())
             .then(console.log);
+
+    window.location = "index.html";
+
 }

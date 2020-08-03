@@ -5,8 +5,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/styles.css">
-	<script src="js/form_button.js"></script>
-	<script src="js/post_country_data.js"></script>
 
 	<title>Bandymas</title>
 	
@@ -19,7 +17,7 @@
 
 <div class="title">
 	<h1 id="main-headline">ŠALYS</h1>
-	<a href="#" id="button1" onclick="buttonClick()" class="button" >+</a>
+	<button id="button1" class="button">+</button>
 </div>
 
 
@@ -33,15 +31,20 @@
 				<th>VEIKSMAI</th>
 			</tr> 
 		<tbody id="data"></tbody>
-
 	</table>
+	
 </div>
 
+<!-- Pagination -->
+
+<div class="pagenumbers" id="pagination">
+		Labas
+</div>
 <!-- Modal Section -->
 
 <div class="bg-modal">
 	<div class="modal-content">
-		<div class="close" onclick="closeButton()">+</div>
+		<div class="close">+</div>
 		<h2 id="form-headline">PRIDĖTI ŠALĮ</h2>
 		<form action="">
 			<fieldset>
@@ -61,13 +64,16 @@
 				<input id="calling_code" type="text">
 			</fieldset>
 
-			<a href="" class="button2" onclick="takeInput()">SAUGOTI</a>
 
 		</form>
+			<button id="button2" class="button2" >SAUGOTI</button>
 	</div>
 </div>
 
 <script src="js/countries.js"></script>
+<script src="js/form_button.js"></script>	
+<script src="js/post_country_data.js"></script>
+<script src="js/pagination.js"></script>
 
 </body>
 </html>
