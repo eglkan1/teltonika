@@ -27,7 +27,7 @@ function takeInput () {
 function postData(data)
 {
     let rawData = JSON.stringify(data);
-    console.log(data);
+  //  console.log(data);
     fetch(postUrl, {
         method : 'Post',
         headers: new Headers({
