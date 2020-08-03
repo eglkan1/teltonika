@@ -32,7 +32,9 @@ fetch(cUrl).then(
 								temp += "<td>"+u.area+"</td>";
 								temp += "<td>"+u.population+"</td>";
 								temp += "<td>"+u.calling_code+"</td>";
-								temp += "<td>"+u.calling_code+"</td></tr>";
+								temp += "<td>"+"<img src=\"img/trash.svg\">"+" | "+
+								"<img src=\"img/edit.svg\">"
+								"</td></tr>";
 
 						//end for loop
 

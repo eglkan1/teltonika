@@ -7,6 +7,16 @@ top: 0px;
 background: #0054A6;
 }
 
+.header img {
+
+position: absolute;
+width: 142.77px;
+height: 28px;
+left: 367px;
+top: 20px;
+
+}
+
 .main-content {
 
 display: flex;
