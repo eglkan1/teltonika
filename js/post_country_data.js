@@ -8,9 +8,9 @@ function takeInput () {
     let area = parseInt(document.getElementById("area").value);
     let population =  parseInt(document.getElementById("population").value);
     let calling_code = document.getElementById("calling_code").value;
-	// console.log("pavadinimas: " + name);
-	// console.log("plotas: " + area);
-	// console.log("gyventojai: " + population);
+    // console.log("pavadinimas: " + name);
+    // console.log("plotas: " + area);
+    // console.log("gyventojai: " + population);
     // console.log("telefonas: " + calling_code);
     let data = {
         "name" : name,
@@ -24,19 +24,22 @@ function takeInput () {
     postData(data);
 }
 
-function postData(data)
+async function postData(data)
 {
     let rawData = JSON.stringify(data);
   //  console.log(data);
-    fetch(postUrl, {
+    let response = await fetch(postUrl, {
         method : 'Post',
         headers: new Headers({
             'Content-Type': 'application/json'
         }),
-        body : rawData})
-        .then(response  => response.json())
-            .then(console.log);
+        body : rawData});
+    console.log(response);
 
-    window.location = "index.html";
-
+    if(response.status === 200) {
+        alert("Sekmingai"); 
+        location.reload();
+    } else {
+        alert("Blogai");
+    }
 }

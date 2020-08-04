@@ -48,14 +48,14 @@ function pagifyData(data) {
 				temp += "<td>" + u.area + "</td>";
 				temp += "<td>" + u.population + "</td>";
 				temp += "<td>" + u.calling_code + "</td>";
-				temp += "<td>" + "<img src=\"img/trash.svg\">" + " | " +
-					"<img src=\"img/edit.svg\">"
+				temp += "<td id=\"actions\"><button  id=\"trash\"href=>" + "<img src=\"img/trash.svg\">" + "</button>" 
+				+ " | " +
+					"<button  id=\"edit\"href=>" + "<img src=\"img/edit.svg\">" + "</button>"
 				"</td></tr>";
 
 				//end for loop
 
 			}
-
 			document.getElementById("data").innerHTML = temp;
 
 			//start for clickable countries
