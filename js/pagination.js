@@ -7,57 +7,57 @@ fetch(cUrl).then(
 				console.log(data);
 
 				const list_element = document.getElementById("countries-data");
-				
 				const pagination_element = document.getElementById("pagination");
 				let current_page = 1;
 				let rows = 2;
 
 				function displayList (items, wrapper, rows_per_page, page){
 
-				page--;
-
-				let start = rows_per_page * page;
-				let end = start + rows_per_page
-				let paginatedItems = items.slice(start, end);
+					page--;
+					let start = rows_per_page * page;
+					let end = start + rows_per_page
+					let paginatedItems = items.slice(start, end);
 
 					if(data.count > 0){
-					let temp = "";
+						let temp = "";
 
-				for (let i = 0; i < paginatedItems.length; i++) {
+						for (let i = 0; i < paginatedItems.length; i++) {
 
-					let u = paginatedItems[i];
+							let u = paginatedItems[i];
 
-					//start for loop
+							//start for loop
 
-						temp += "<tr>";
-						temp += "<td><a id=\""+u.id+"\" href=#>"+u.name+"</td>";
-						temp += "<td>"+u.area+"</td>";
-						temp += "<td>"+u.population+"</td>";
-						temp += "<td>"+u.calling_code+"</td>";
-						temp += "<td>"+u.calling_code+"</td></tr>";
+								temp += "<tr>";
+								temp += "<td><a id=\""+u.id+"\" href=#>"+u.name+"</td>";
+								temp += "<td>"+u.area+"</td>";
+								temp += "<td>"+u.population+"</td>";
+								temp += "<td>"+u.calling_code+"</td>";
+								temp += "<td>"+u.calling_code+"</td></tr>";
 
-					//end for loop
+						//end for loop
 
+						}
+
+					document.getElementById("data").innerHTML = temp;
+
+					//start for clickable countries
+
+					ourHeadline = document.getElementById("main-headline");
+					let listItems = document.getElementById("data").
+					getElementsByTagName("a");
+
+					for (let i = 0; i < listItems.length; i++) {
+
+						listItems[i].addEventListener("click", activateItem)
+					}
+
+					function activateItem(){
+
+						window.location = "cities.html?id=" + this.id;
+					}
 				}
+			}
 
-				document.getElementById("data").innerHTML = temp;
-
-				//start for clickable countries
-
-				ourHeadline = document.getElementById("main-headline");
-				let listItems = document.getElementById("data").
-				getElementsByTagName("a");
-
-				for (let i = 0; i < listItems.length; i++) {
-
-					listItems[i].addEventListener("click", activateItem)
-				}
-
-				function activateItem(){
-
-					window.location = "cities.html?id=" + this.id;
-				}
-				}}
 
 				//end for clickable countries
 
@@ -67,7 +67,6 @@ fetch(cUrl).then(
 					wrapper.innerHTML = "";
 
 					let page_count = Math.ceil(items.length / rows_per_page);
-					console.log(page_count);
 					for (let i = 1; i < page_count + 1; i++) {
 						let btn = paginationButton(i, items);
 						wrapper.appendChild(btn);

@@ -1,106 +1,122 @@
-let cUrl = "https://akademija.teltonika.lt/api3/countries";
-//console.log(data);
-fetch(cUrl).then(
-	function(res){
-		res.json().then(
-			function (data){
-				console.log(data);
+let countryUrl = "https://akademija.teltonika.lt/api3/countries";
 
-				const list_element = document.getElementById("countries-data");
-				const pagination_element = document.getElementById("pagination");
-				let current_page = 1;
-				let rows = 2;
+async function getAllCountries(countryUrl) {
+	countryUrl += "?page=";
+	let currentPage = 1;
+	let lastPage = false;
+	let countries = [];
 
-				function displayList (items, wrapper, rows_per_page, page){
+	while (lastPage == false) {
+		let response = await fetch(countryUrl + currentPage);
+		let data = await response.json();
+		countries = countries.concat(data.countires);
 
-					page--;
-					let start = rows_per_page * page;
-					let end = start + rows_per_page
-					let paginatedItems = items.slice(start, end);
+		if (data.countires.length === 10) {
+			currentPage++;
+		} else {
+			lastPage = true;
+		}3
+	}
 
-					if(data.count > 0){
-						let temp = "";
+	return countries;
+}
 
-						for (let i = 0; i < paginatedItems.length; i++) {
+function pagifyData(data) {
+	const list_element = document.getElementById("countries-data");
+	const pagination_element = document.getElementById("pagination");
+	let current_page = 1;
+	let rows = 10;
 
-							let u = paginatedItems[i];
+	function displayList(items, wrapper, rows_per_page, page) {
 
-							//start for loop
+		page--;
+		let start = rows_per_page * page;
+		let end = start + rows_per_page
+		let paginatedItems = items.slice(start, end);
 
-								temp += "<tr>";
-								temp += "<td><a id=\""+u.id+"\" href=#>"+u.name+"</td>";
-								temp += "<td>"+u.area+"</td>";
-								temp += "<td>"+u.population+"</td>";
-								temp += "<td>"+u.calling_code+"</td>";
-								temp += "<td>"+"<img src=\"img/trash.svg\">"+" | "+
-								"<img src=\"img/edit.svg\">"
-								"</td></tr>";
+		if (items.length > 0) {
+			let temp = "";
 
-						//end for loop
+			for (let i = 0; i < paginatedItems.length; i++) {
 
-						}
+				let u = paginatedItems[i];
 
-					document.getElementById("data").innerHTML = temp;
+				//start for loop
 
-					//start for clickable countries
+				temp += "<tr>";
+				temp += "<td><a id=\"" + u.id + "\" href=#>" + u.name + "</td>";
+				temp += "<td>" + u.area + "</td>";
+				temp += "<td>" + u.population + "</td>";
+				temp += "<td>" + u.calling_code + "</td>";
+				temp += "<td>" + "<img src=\"img/trash.svg\">" + " | " +
+					"<img src=\"img/edit.svg\">"
+				"</td></tr>";
 
-					ourHeadline = document.getElementById("main-headline");
-					let listItems = document.getElementById("data").
-					getElementsByTagName("a");
+				//end for loop
 
-					for (let i = 0; i < listItems.length; i++) {
-
-						listItems[i].addEventListener("click", activateItem)
-					}
-
-					function activateItem(){
-
-						window.location = "cities.html?id=" + this.id;
-					}
-				}
 			}
 
+			document.getElementById("data").innerHTML = temp;
 
-				//end for clickable countries
+			//start for clickable countries
 
-				//start for pagination
+			ourHeadline = document.getElementById("main-headline");
+			let listItems = document.getElementById("data").
+			getElementsByTagName("a");
 
-				function setupPagination (items, wrapper, rows_per_page){
-					wrapper.innerHTML = "";
+			for (let i = 0; i < listItems.length; i++) {
 
-					let page_count = Math.ceil(items.length / rows_per_page);
-					for (let i = 1; i < page_count + 1; i++) {
-						let btn = paginationButton(i, items);
-						wrapper.appendChild(btn);
-					}
-				}
+				listItems[i].addEventListener("click", activateItem)
+			}
 
-				function paginationButton (page, items) {
+			function activateItem() {
 
-					let button = document.createElement("button");
-					button.innerText = page;
+				window.location = "cities.html?id=" + this.id;
+			}
+		}
+	}
 
-					if (current_page == page) button.classList.add("active");
+	//end for clickable countries
 
-					button.addEventListener("click", function(){
-						current_page = page;
-						displayList(items, list_element, rows, current_page)
+	//start for pagination
 
-						let current_btn = document.querySelector(".pagenumbers button.active");
-						current_btn.classList.remove("active");
+	function setupPagination(items, wrapper, rows_per_page) {
+		wrapper.innerHTML = "";
 
-						button.classList.add("active");
-					});
+		let page_count = Math.ceil(items.length / rows_per_page);
+		for (let i = 1; i < page_count + 1; i++) {
+			let btn = paginationButton(i, items);
+			wrapper.appendChild(btn);
+		}
+	}
 
-					return button;
-				}
+	function paginationButton(page, items) {
 
-				//end for pagination
+		let button = document.createElement("button");
+		button.innerText = page;
 
-			displayList(data.countires, list_element, rows, current_page);
-			setupPagination(data.countires, pagination_element, rows);
-			
-	})
-})
+		if (current_page == page) button.classList.add("active");
 
+		button.addEventListener("click", function () {
+			current_page = page;
+			displayList(items, list_element, rows, current_page)
 
+			let current_btn = document.querySelector(".pagenumbers button.active");
+			current_btn.classList.remove("active");
+
+			button.classList.add("active");
+		});
+
+		return button;
+	}
+	//end for pagination
+
+	displayList(data, list_element, rows, current_page);
+	setupPagination(data, pagination_element, rows);
+}
+
+(async function () {
+
+	let countries = await getAllCountries(countryUrl);
+	pagifyData(countries);
+})();

@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
 .header {
 position: absolute;
 width: 100%;
@@ -12,35 +15,29 @@ background: #0054A6;
 position: absolute;
 width: 142.77px;
 height: 28px;
-left: 367px;
 top: 20px;
+margin-left: 180px;
 
 }
 
 .main-content {
 
-display: flex;
 justify-content: center;
-position: absolute;
-width: 1700px;
-height: 588px;
-left: 376px;
-top: 315px;
+font-family: 'Oswald', sans-serif;
+font-size: 14px;
 background: #FFFFFF;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
 border-radius: 5px;
+margin:70px 200px 0px 200px;
+color: #5C5C5C;
 
 }
 
 /* šalys */
 .title {
-position: relative;
-width: 166px;
-height: 95px;
-left: 376px;
-top: 116px;
-
-font-family: Oswald;
+margin-left: 200px;
+margin-top: 100px;
+font-family: 'Oswald', sans-serif;
 font-style: normal;
 font-weight: normal;
 font-size: 30px;
@@ -48,30 +45,29 @@ line-height: 95px;
 /* identical to box height */
 letter-spacing: 0.016em;
 text-transform: uppercase;
-
 color: #5C5C5C;
 }
 
 .button{
 	/* Group 6 */
+position: absolute;
+left: 380px;
+top: 125px;
 font-size: 50px;
 font-family: Oswald;
-position: absolute;
-width: 60px;
-height: 60px;
-left: 220px;
-top: 15px;
-border-radius: 100px;
+width: 45px;
+height: 45px;
+border-radius: 50px;
 background: #FFFFFF;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 outline: none;
 text-align: center;
 display: flex;
 justify-content: center;
 color: #5C5C5C;
 cursor: pointer;
-line-height: 64px;
-
+line-height: 40px;
+border:none;
 }
 
  td, th {
@@ -87,12 +83,13 @@ a:link, a:visited {
 table {
   border-collapse: collapse;
   width: 95%;
-  margin: 30px;
+  margin: 20px;
   border:hidden;
+  font-size: 12px;
 }
 
 th, td {
-  padding: 15px;
+  padding: 6px;
 }
 
 .bg-modal {
@@ -187,7 +184,8 @@ fieldset {
 	align-items: center;
 	position: absolute;
 	left: 50%;
-	bottom: 170px;
+	bottom: 30px;
+
 
 }
 
