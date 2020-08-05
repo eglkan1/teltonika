@@ -43,6 +43,8 @@ function pagifyData(data) {
 
 				let u = paginatedItems[i];
 				idArray.push(u.id);
+
+			    
 				//start for loop
 
 				temp += "<tr>";
@@ -53,7 +55,7 @@ function pagifyData(data) {
 				temp += "<td class=\"actions\"><button id=\"trash" + u.id + "\" class=\"trash\">" 
 				+ "<img src=\"img/trash.svg\">" + "</button>" 
 				+ " | " 
-				+ "<button id=edit\"" + u.id + "\" class=\"edit\">" + "<img src=\"img/edit.svg\">" + "</button>"
+				+ "<button id=\"edit" + u.id + "\" class=\"edit\">" + "<img src=\"img/edit.svg\">" + "</button>"
 				"</td></tr>";
 
 				//end for loop
@@ -65,14 +67,13 @@ function pagifyData(data) {
 			// delete
 
 			for(let i = 0; i < idArray.length; i++){
+				 
 				document.getElementById("trash"+ idArray[i]).addEventListener("click", async function (){
+					
 					let response = await fetch(countryUrl + "/" + idArray[i], {
 						method : "delete"
 					});
 					let data = await response.json();
-					console.log(response);
-
-					console.log(data);
 					alert(JSON.stringify(data));
 					location.reload();
 				})
@@ -81,20 +82,70 @@ function pagifyData(data) {
 			//end of delete
 
 			//edit
-
+			let currentUrl = location.href;
 			for(let i = 0; i < idArray.length; i++){
-				let u = document.getElementById("edit"+ idArray[i]);
-				console.log("edit"+idArray[i]);
+
+				document.getElementById("edit"+ idArray[i]).addEventListener("click", function(){
+				console.log(location.href);
+			//	window.location = "index.html?edit_id=" + this.id;
+				// window.onLoad(document.querySelector(".bg-modal-edit").style.display = "flex");
+				document.querySelector(".bg-modal-edit").style.display = "flex";
+				history.pushState({
+				    id: 'homepage'
+				}, 'Home | My App', currentUrl + "?edit=" + idArray[i]);
+
+				console.log(location.href.split('=').pop());
+			});
+
+				document.querySelector(".close-edit").addEventListener("click", function(){
+				document.querySelector(".bg-modal-edit").style.display = "none";
+				history.pushState({
+				    id: 'homepage'
+				}, 'Home | My App', currentUrl);
+			});
+			
+		}
+
+				document.getElementById("button-edit").addEventListener("click", editInput);
+
+					async function editInput () {
+					let name = document.getElementById("name-edit").value;
+				    let area = parseInt(document.getElementById("area-edit").value);
+				    let population =  parseInt(document.getElementById("population-edit").value);
+				    let calling_code = document.getElementById("calling_code-edit").value;
+				   
+
+				    let data = {
+				        "name" : name,
+				        "area" : area,
+				        "population" : population,
+				        "calling_code" : calling_code
+				    }
+
+				    editData(data);
+				}
+
+				async function editData(data1) {
+					
+					let id = location.href.split('=').pop();
+					let rawData = JSON.stringify(data1);
+					console.log(rawData);
+					let response = await fetch(countryUrl + "/" + id, {
+						method : "put",
+						headers: new Headers({
+            			'Content-Type': 'application/json'
+        				}),
+        				body : rawData});
+
+					    if(response.status === 200) {
+				        alert("Sekmingai"); 
+				        window.location = "index.html";
+				    } else {
+				        alert("Blogai");
+				    }
 
 			}
-
-		//	document.getElementById("button1").addEventListener("click", 
-		//	function(){
-		//	document.querySelector(".bg-modal").style.display = "flex";
-//});
-
-
-
+	
 			//end of edit
 
 

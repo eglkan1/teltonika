@@ -7,10 +7,8 @@ function takeInput () {
     let area = parseInt(document.getElementById("area").value);
     let population =  parseInt(document.getElementById("population").value);
     let calling_code = document.getElementById("calling_code").value;
-    // console.log("pavadinimas: " + name);
-    // console.log("plotas: " + area);
-    // console.log("gyventojai: " + population);
-    // console.log("telefonas: " + calling_code);
+
+
     let data = {
         "name" : name,
         "area" : area,
@@ -19,14 +17,14 @@ function takeInput () {
     }
     //patikrint, ar duomenys korektiski
 
-    //
+    console.log(data);
     postData(data);
 }
 
 async function postData(data)
 {
     let rawData = JSON.stringify(data);
-  //  console.log(data);
+    console.log(data);
     let response = await fetch(postUrl, {
         method : 'Post',
         headers: new Headers({
