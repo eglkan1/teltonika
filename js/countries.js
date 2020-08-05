@@ -37,10 +37,12 @@ function pagifyData(data) {
 		if (items.length > 0) {
 			let temp = "";
 
+			let idArray = [];
+
 			for (let i = 0; i < paginatedItems.length; i++) {
 
 				let u = paginatedItems[i];
-
+				idArray.push(u.id);
 				//start for loop
 
 				temp += "<tr>";
@@ -48,17 +50,53 @@ function pagifyData(data) {
 				temp += "<td>" + u.area + "</td>";
 				temp += "<td>" + u.population + "</td>";
 				temp += "<td>" + u.calling_code + "</td>";
-				temp += "<td id=\"actions\"><button  id=\"trash\"href=>" + "<img src=\"img/trash.svg\">" + "</button>" 
-				+ " | " +
-					"<button  id=\"edit\"href=>" + "<img src=\"img/edit.svg\">" + "</button>"
+				temp += "<td class=\"actions\"><button id=\"trash" + u.id + "\" class=\"trash\">" 
+				+ "<img src=\"img/trash.svg\">" + "</button>" 
+				+ " | " 
+				+ "<button id=edit\"" + u.id + "\" class=\"edit\">" + "<img src=\"img/edit.svg\">" + "</button>"
 				"</td></tr>";
 
 				//end for loop
 
 			}
+
 			document.getElementById("data").innerHTML = temp;
 
-			//start for clickable countries
+			// delete
+
+			for(let i = 0; i < idArray.length; i++){
+				document.getElementById("trash"+ idArray[i]).addEventListener("click", async function (){
+					let response = await fetch(countryUrl + "/" + idArray[i], {
+						method : "delete"
+					});
+					let data = await response.json();
+					console.log(response);
+
+					console.log(data);
+					alert(JSON.stringify(data));
+					location.reload();
+				})
+			}
+
+			//end of delete
+
+			//edit
+
+			for(let i = 0; i < idArray.length; i++){
+				let u = document.getElementById("edit"+ idArray[i]);
+				console.log("edit"+idArray[i]);
+
+			}
+
+		//	document.getElementById("button1").addEventListener("click", 
+		//	function(){
+		//	document.querySelector(".bg-modal").style.display = "flex";
+//});
+
+
+
+			//end of edit
+
 
 			ourHeadline = document.getElementById("main-headline");
 			let listItems = document.getElementById("data").
@@ -76,7 +114,6 @@ function pagifyData(data) {
 		}
 	}
 
-	//end for clickable countries
 
 	//start for pagination
 
@@ -119,4 +156,6 @@ function pagifyData(data) {
 
 	let countries = await getAllCountries(countryUrl);
 	pagifyData(countries);
+
+
 })();

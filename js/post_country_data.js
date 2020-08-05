@@ -1,5 +1,4 @@
 
-
 document.getElementById("button2").addEventListener("click", takeInput);
 let postUrl = "https://akademija.teltonika.lt/api3/countries";
 

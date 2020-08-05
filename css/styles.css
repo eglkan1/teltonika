@@ -228,12 +228,12 @@ fieldset {
 /* or 43px */
 
 
-#actions {
+.actions {
 	text-align: center;
 	font-size: 1.5vw;
 }
 
-#trash, #edit {
+.trash, .edit {
 border:none;
 background-color: white;
 cursor: pointer;
