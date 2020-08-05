@@ -1,0 +1,43 @@
+
+document.getElementById("button2").addEventListener("click", takeInput);
+let postUrl = "https://akademija.teltonika.lt/api3/cities";
+
+function takeInput () {
+    let name = document.getElementById("name").value;
+    let area = parseInt(document.getElementById("area").value);
+    let population =  parseInt(document.getElementById("population").value);
+    let postcode = document.getElementById("postcode").value;
+
+
+    let data = {
+        "country_id" : id, 
+        "name" : name,
+        "area" : area,
+        "population" : population,
+        "postcode" : postcode
+    }
+    //patikrint, ar duomenys korektiski
+
+    console.log(data);
+    postData(data);
+}
+
+async function postData(data)
+{
+    let rawData = JSON.stringify(data);
+    console.log(data);
+    let response = await fetch(postUrl, {
+        method : 'Post',
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        }),
+        body : rawData});
+    console.log(response);
+
+    if(response.status === 200) {
+        alert("Sekmingai"); 
+        location.reload();
+    } else {
+        alert("Blogai");
+    }
+}

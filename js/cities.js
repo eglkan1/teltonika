@@ -10,7 +10,7 @@ let countryUrl = "https://akademija.teltonika.lt/api3/countries/" + id;
 		console.log(countryUrl);
 		let response = await fetch(countryUrl);
 		let data = await response.json();
-		document.getElementById("our-headline").innerHTML = data.name;
+		document.getElementById("changing-headline").innerHTML = data.name;
 
 })(countryUrl);
 
@@ -235,7 +235,7 @@ async function sortDescending() {
 
 async function searchResult(e) {
 
-	
+
     if (e.key === 'Enter') {
 		cities = await getAllCities(cityUrl + "/" + id, "text=" + this.value);
 		pagifyData(cities);
