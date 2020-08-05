@@ -72,6 +72,28 @@ line-height: 40px;
 border:none;
 }
 
+.button-cities{
+	/* Group 6 */
+position: absolute;
+left: 380px;
+top: 125px;
+font-size: 50px;
+font-family: Oswald;
+width: 45px;
+height: 45px;
+border-radius: 50px;
+background: #FFFFFF;
+box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+outline: none;
+text-align: center;
+display: flex;
+justify-content: center;
+color: #5C5C5C;
+cursor: pointer;
+line-height: 40px;
+border:none;
+}
+
  td, th {
 
   border: 1px solid #ddd;

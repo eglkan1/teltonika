@@ -1,7 +1,14 @@
 let countryUrl = "https://akademija.teltonika.lt/api3/countries";
 
-async function getAllCountries(countryUrl) {
-	countryUrl += "?page=";
+async function getAllCountries(countryUrl, sortBy) {
+
+	if (sortBy !== "") {
+		countryUrl += "?" + sortBy + "&page=";
+		console.log(countryUrl);
+	} else {
+		countryUrl += "?page=";
+		console.log(countryUrl);
+	}
 	let currentPage = 1;
 	let lastPage = false;
 	let countries = [];
@@ -203,10 +210,44 @@ function pagifyData(data) {
 	setupPagination(data, pagination_element, rows);
 }
 
-(async function () {
+function sortAlphabetically(a, b) {
+	var nameA = a.name.toLowerCase(),
+		nameB = b.name.toLowerCase();
+	if (nameA < nameB) {
+		return -1;
+	}
+	if (nameA > nameB) {
+		return 1;
+	}
+	return 0;
+}
 
-	let countries = await getAllCountries(countryUrl);
+(async function unsortedPage() {
+
+	countries = await getAllCountries(countryUrl, "");
+	// console.l og(countries);
 	pagifyData(countries);
-
-
 })();
+
+async function sortAscending() {
+	countries.sort(sortAlphabetically);
+	pagifyData(countries);
+}
+
+async function sortDescending() {
+	countries.sort(sortAlphabetically).reverse();
+	pagifyData(countries);
+}
+
+async function searchResult(e) {
+    if (e.key === 'Enter') {
+		countries = await getAllCountries(countryUrl, "text=" + this.value);
+		pagifyData(countries);
+    }
+}
+
+document.getElementById("asc").addEventListener("click", sortAscending);
+document.getElementById("desc").addEventListener("click", sortDescending);
+document.getElementById("searchBox").addEventListener('keypress', searchResult);
+
+

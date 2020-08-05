@@ -3,23 +3,32 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/styles.css">
-	<title>Bandymas</title>
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+	<title>Teltonika</title>
 	
 </head>
 <body>
 
-<div class="header"></div>
+<div class="header">
+	<img src="img/logo.svg">
+</div>
 
 <div class="title">
-	<h1 id="our-headline">ŠALYS</h1>
+	<h1 id="our-headline"><button id="button-cities" class="button">+</button></h1>
 </div>
 
 <div class="main-content">
+	<input type="text" placeholder="Search" id="searchBox" >
 	<table id="cities-data">
 			<tr>
-				<th>PAVADINIMAS</th>
+				<th>PAVADINIMAS
+					<a href="javascript:;" id="asc">&#9650</a>
+					<a href="javascript:;" id="desc">&#9660</a>
+				</th>
 				<th>UŽIMAMAS PLOTAS</th>
 				<th>GYVENTOJŲ SKAIČIUS</th>
 				<th>MIESTO PAŠTO KODAS</th>
@@ -27,6 +36,70 @@
 			</tr> 
 		<tbody id="data"></tbody>
 	</table>
+</div>
+
+<!-- Pagination -->
+
+<div class="container">
+	<div class="pagenumbers" id="pagination"></div>
+</div>
+
+<!-- Modal Section -->
+
+<div class="bg-modal">
+	<div class="modal-content">
+		<div class="close">+</div>
+		<h2 id="form-headline">PRIDĖTI MIESTĄ</h2>
+		<form action="">
+			<fieldset>
+				<legend>Pavadinimas</legend>
+				<input id="name" type="text">
+			</fieldset>
+			<fieldset>
+				<legend>Užimamas plotas</legend>
+				<input id="area" type="text">
+			</fieldset>
+			<fieldset>
+				<legend>Gyventojų skaičius</legend>
+				<input id="population" type="text">
+			</fieldset>
+			<fieldset>
+				<legend>Miesto pašto kodas</legend>
+				<input id="postcode" type="text">
+			</fieldset>
+
+		</form>
+			<button id="button2" class="button2" >SAUGOTI</button>
+	</div>
+</div>
+
+<!-- Modal Section for edit-->
+
+<div class="bg-modal-edit">
+	<div class="modal-content">
+		<div class="close-edit">+</div>
+		<h2 id="form-headline">REDAGUOTI MIESTĄ</h2>
+		<form action="">
+			<fieldset>
+				<legend>Pavadinimas</legend>
+				<input id="name-edit" type="text">
+			</fieldset>
+			<fieldset>
+				<legend>Užimamas plotas</legend>
+				<input id="area-edit" type="text">
+			</fieldset>
+			<fieldset>
+				<legend>Gyventojų skaičius</legend>
+				<input id="population-edit" type="text">
+			</fieldset>
+			<fieldset>
+				<legend>Miesto pašto kodas</legend>
+				<input id="postcode-edit" type="text">
+			</fieldset>
+
+		</form>
+			<button id="button-edit" class="button-edit" >KEISTI</button>
+	</div>
 </div>
 
 <script src="js/cities.js"></script>
