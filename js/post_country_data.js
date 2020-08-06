@@ -34,7 +34,7 @@ async function postData(data)
     console.log(response);
 
     if(response.status === 200) {
-        alert("Šalis pridėta sėkmingai."); 
+        alert("Šalis pridėta sėkmingai. "); 
         location.reload();
     } else {
         alert("Šalis nebuvo pridėta. Įveskite visus duomenis.");
