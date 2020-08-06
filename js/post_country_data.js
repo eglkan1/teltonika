@@ -34,9 +34,9 @@ async function postData(data)
     console.log(response);
 
     if(response.status === 200) {
-        alert("Sekmingai"); 
+        alert("Šalis pridėta sėkmingai."); 
         location.reload();
     } else {
-        alert("Blogai");
+        alert("Šalis nebuvo pridėta. Įveskite visus duomenis.");
     }
 }

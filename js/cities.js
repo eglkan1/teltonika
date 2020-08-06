@@ -97,7 +97,7 @@ function pagifyData(data) {
 						method : "delete"
 					});
 					let data = await response.json();
-					alert(JSON.stringify(data));
+					alert("Miestas pašalintas sėkmingai!");
 					location.reload();
 				})
 			}
@@ -159,11 +159,11 @@ function pagifyData(data) {
         				body : rawData});
 
 					    if(response.status === 200) {
-				        alert("Sekmingai"); 
+				        alert("Miesto duomenys buvo sėkmingai pakeisti."); 
 				        console.log(id);
 				        window.location = "cities.html?id=" + id;
 				    } else {
-				        alert("Blogai");
+				        alert("Miesto duomenys nebuvo pakeisti. Užpildykite visus laukus.");
 				    }
 
 			}

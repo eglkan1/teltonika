@@ -81,7 +81,7 @@ function pagifyData(data) {
 						method : "delete"
 					});
 					let data = await response.json();
-					alert(JSON.stringify(data));
+					alert("Šalis pašalinta sėkmingai!");
 					location.reload();
 				})
 			}
@@ -145,10 +145,10 @@ function pagifyData(data) {
         				body : rawData});
 
 					    if(response.status === 200) {
-				        alert("Sekmingai"); 
+				        alert("Šalies duomenys buvo sėkmingai pakeisti."); 
 				        window.location = "index.html";
 				    } else {
-				        alert("Blogai");
+				        alert("Šalies duomenys nebuvo pakeisti. Užpildykite visus laukus.");
 				    }
 
 			}

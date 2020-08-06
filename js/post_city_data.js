@@ -35,9 +35,9 @@ async function postData(data)
     console.log(response);
 
     if(response.status === 200) {
-        alert("Sekmingai"); 
+        alert("Miestas pridėtas sėkmingai."); 
         location.reload();
     } else {
-        alert("Blogai");
+        alert("Miestas nebuvo pridėtas. Įveskite visus duomenis.");
     }
 }
